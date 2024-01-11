@@ -258,6 +258,13 @@ function Actor:can_use(action)
     if (player == nil) or (action == nil) then return false end
     if magic_prefixes:contains(action.prefix) then
 		local learned
+		
+		if action.id == 363 then
+			action.id = 273 -- Sleepga
+		elseif action.id == 364 then
+			action.id = 274 -- Sleepga II
+		end
+		
 		if action.id == 503 then -- impact
 			-- Credits to Rubenator
 			local equippable_bags = res.bags:equippable(true):map(windower.ffxi.get_items..table.get-{'id'}):filter(table.get-{'enabled'}):map(L..table.key_filter-{functions.equals('number')..type})
